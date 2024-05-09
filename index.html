@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+</head>
+<body>
+
+    <h1>Debouncing</h1>
+    <label for="search">Search Box:</label>
+    <input type="text" id="search" onkeypress="betterFunction()">
+    
+    <script>
+        let counter=0;
+
+        function fetch()
+        {
+            console.log("Fetching Data.."+ ++counter);
+        }
+        function myDebounce(callback,delay){
+            let timer;
+
+           return  function ()
+            {
+                if(timer){
+                clearTimeout(timer)
+                }
+                timer=setTimeout(()=>{
+                    callback()
+                },delay)
+            }
+            
+
+        }
+        const betterFunction=myDebounce(fetch,300)
+
+    </script>
+</body>
+</html>
